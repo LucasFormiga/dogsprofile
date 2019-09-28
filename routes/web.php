@@ -22,5 +22,6 @@ Route::namespace('Api')->prefix('api')->group(function () {
 
 	Route::prefix('profiles')->group(function () {
 		Route::get('', 'ApiController@all')->name('api.profiles.all');
+		Route::get('/search', 'ApiController@search')->name('api.profiles.search');
 	});
 });

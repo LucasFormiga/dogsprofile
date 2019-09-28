@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Dog;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\DogResource;
+use Illuminate\Http\Request;
 
 class ApiController extends Controller
 {
@@ -25,5 +26,61 @@ class ApiController extends Controller
 		$dog = Dog::find($id);
 
 		return new DogResource($dog);
+	}
+
+	public function search(Request $request)
+	{
+		$query = new Dog;
+
+		if ($request->has('id')) {
+			$query = $query->where('id', $request->id);
+		}
+
+		if ($request->has('name')) {
+			$query = $query->where('name', 'like', "%{$request->name}%");
+		}
+
+		if ($request->has('breed')) {
+			$query = $query->where('breed', $request->breed);
+		}
+
+		if ($request->has('owner')) {
+			$query = $query->where('owner', $request->owner);
+		}
+
+		if ($request->has('age')) {
+			$query = $query->where('age', $request->age);
+		}
+
+		if ($request->has('size')) {
+			$query = $query->where('size', $request->size);
+		}
+
+		if ($request->has('weight')) {
+			$query = $query->where('weight', $request->weight);
+		}
+
+		if ($request->has('orderBy')) {
+			if ($request->has('orderDirection')) {
+				switch ($request->orderDirection) {
+					case 'asc':
+						$query = $query->orderBy($request->orderBy, 'asc');
+						break;
+
+					case 'desc':
+						$query = $query->orderBy($request->orderBy, 'desc');
+						break;
+
+					default:
+						$query = $query->orderBy($request->orderBy);
+				}
+			} else {
+				$query = $query->orderBy($request->orderBy);
+			}
+		}
+
+		$query = $query->get();
+
+		return DogResource::collection($query);
 	}
 }
