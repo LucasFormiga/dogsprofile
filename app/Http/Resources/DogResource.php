@@ -17,7 +17,8 @@ class DogResource extends JsonResource
         return [
 			'id' => $this->id,
 			'name' => $this->name,
-			'breed' => $this->breed,
+			'breed_id' => $this->breed,
+			'breed' => $this->breeds->name,
 			'age' => $this->age,
 			'size' => $this->size,
 			'weight' => $this->weight,

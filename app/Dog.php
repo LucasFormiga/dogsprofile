@@ -15,8 +15,8 @@ class Dog extends Model
 		'owner'
 	];
 
-	public function breed()
+	public function breeds()
 	{
-		return $this->belongsTo('App\Breed', 'id', 'breed');
+		return $this->belongsTo('App\Breed', 'breed', 'id');
 	}
 }

@@ -3,7 +3,6 @@
 namespace Tests\Feature;
 
 use Tests\TestCase;
-use Faker\Factory as Faker;
 
 class ApiTest extends TestCase
 {
@@ -49,6 +48,7 @@ class ApiTest extends TestCase
 		foreach ($content['data'] as $items) {
 			$this->assertArrayHasKey('id', $items);
 			$this->assertArrayHasKey('name', $items);
+			$this->assertArrayHasKey('breed_id', $items);
 			$this->assertArrayHasKey('breed', $items);
 			$this->assertArrayHasKey('age', $items);
 			$this->assertArrayHasKey('size', $items);
@@ -90,6 +90,7 @@ class ApiTest extends TestCase
 
 		$this->assertArrayHasKey('id', $content['data']);
 		$this->assertArrayHasKey('name', $content['data']);
+		$this->assertArrayHasKey('breed_id', $content['data']);
 		$this->assertArrayHasKey('breed', $content['data']);
 		$this->assertArrayHasKey('age', $content['data']);
 		$this->assertArrayHasKey('size', $content['data']);
