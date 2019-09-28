@@ -18,6 +18,8 @@ Route::get('/', function () {
 Route::namespace('Api')->prefix('api')->group(function () {
 	Route::get('', 'ApiController@index')->name('api.index');
 
+	Route::get('/profile/{id}', 'ApiController@profile')->name('api.profile');
+
 	Route::prefix('profiles')->group(function () {
 		Route::get('', 'ApiController@all')->name('api.profiles.all');
 	});

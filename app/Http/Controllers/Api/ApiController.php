@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Dog;
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use App\Http\Resources\DogResource;
 
 class ApiController extends Controller
 {
@@ -15,18 +15,15 @@ class ApiController extends Controller
 
 	public function all()
 	{
-		$params = [
-			'id',
-			'name',
-			'breed',
-			'age',
-			'size',
-			'weight',
-			'owner'
-		];
-
 		$dogs = Dog::all();
 
-		return $dogs->toJson();
+		return DogResource::collection($dogs);
+	}
+
+	public function profile($id)
+	{
+		$dog = Dog::find($id);
+
+		return new DogResource($dog);
 	}
 }
