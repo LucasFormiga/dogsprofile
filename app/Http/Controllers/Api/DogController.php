@@ -7,28 +7,29 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\DogResource;
 use Illuminate\Http\Request;
 
-class ApiController extends Controller
+class DogController extends Controller
 {
 	public function index()
-	{
-		return "Hello, world!";
-	}
-
-	public function all()
 	{
 		$dogs = Dog::all();
 
 		return DogResource::collection($dogs);
 	}
 
-	public function profile($id)
+	public function show(Request $request)
 	{
-		$dog = Dog::find($id);
+		$dog = Dog::find($request->id);
+
+		if (!$dog) {
+			return response()->json([
+				'data' => []
+			], 404);
+		}
 
 		return new DogResource($dog);
 	}
 
-	public function search(Request $request)
+	public function find(Request $request)
 	{
 		$query = new Dog;
 

@@ -16,12 +16,17 @@ Route::get('/', function () {
 });
 
 Route::namespace('Api')->prefix('api')->group(function () {
-	Route::get('', 'ApiController@index')->name('api.index');
+	Route::get('', 'HomeController@index')->name('api.index');
 
-	Route::get('/profile/{id}', 'ApiController@profile')->name('api.profile');
+	Route::prefix('dogs')->group(function () {
+		Route::prefix('profile')->group(function () {
+			Route::get('/{id}', 'DogController@show')->name('api.dogs.profile.show');
+			Route::post('', 'DogController@create')->name('api.dogs.profile.create');
+		});
 
-	Route::prefix('profiles')->group(function () {
-		Route::get('', 'ApiController@all')->name('api.profiles.all');
-		Route::get('/search', 'ApiController@search')->name('api.profiles.search');
+		Route::prefix('profiles')->group(function () {
+			Route::get('', 'DogController@index')->name('api.dogs.profiles.index');
+			Route::get('/find', 'DogController@find')->name('api.dogs.profiles.find');
+		});
 	});
 });

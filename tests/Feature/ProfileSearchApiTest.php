@@ -14,7 +14,7 @@ class ProfileApiTest extends TestCase
 		 * like the route we want to test and the
 		 * status code the response should return.
 		 */
-		$route = route('api.profiles.search') . '?id=1';
+		$route = route('api.dogs.profiles.find') . '?id=1';
 		$code = 200;
 
 		/**
@@ -57,7 +57,7 @@ class ProfileApiTest extends TestCase
 		 * like the route we want to test and the
 		 * status code the response should return.
 		 */
-		$route = route('api.profiles.search') . '?name=Eduardo';
+		$route = route('api.dogs.profiles.find') . '?name=Eduardo';
 		$code = 200;
 
 		/**
@@ -100,7 +100,7 @@ class ProfileApiTest extends TestCase
 		 * like the route we want to test and the
 		 * status code the response should return.
 		 */
-		$route = route('api.profiles.search') . '?breed=1';
+		$route = route('api.dogs.profiles.find') . '?breed=1';
 		$code = 200;
 
 		/**
@@ -143,7 +143,7 @@ class ProfileApiTest extends TestCase
 		 * like the route we want to test and the
 		 * status code the response should return.
 		 */
-		$route = route('api.profiles.search') . '?owner=1';
+		$route = route('api.dogs.profiles.find') . '?owner=1';
 		$code = 200;
 
 		/**
@@ -186,7 +186,7 @@ class ProfileApiTest extends TestCase
 		 * like the route we want to test and the
 		 * status code the response should return.
 		 */
-		$route = route('api.profiles.search') . '?age=1';
+		$route = route('api.dogs.profiles.find') . '?age=1';
 		$code = 200;
 
 		/**
@@ -229,7 +229,7 @@ class ProfileApiTest extends TestCase
 		 * like the route we want to test and the
 		 * status code the response should return.
 		 */
-		$route = route('api.profiles.search') . '?size=1';
+		$route = route('api.dogs.profiles.find') . '?size=1';
 		$code = 200;
 
 		/**
@@ -272,7 +272,7 @@ class ProfileApiTest extends TestCase
 		 * like the route we want to test and the
 		 * status code the response should return.
 		 */
-		$route = route('api.profiles.search') . '?weight=1';
+		$route = route('api.dogs.profiles.find') . '?weight=1';
 		$code = 200;
 
 		/**
@@ -315,7 +315,7 @@ class ProfileApiTest extends TestCase
 		 * like the route we want to test and the
 		 * status code the response should return.
 		 */
-		$route = route('api.profiles.search') . '?orderBy=id';
+		$route = route('api.dogs.profiles.find') . '?orderBy=id';
 		$code = 200;
 
 		/**
@@ -358,7 +358,7 @@ class ProfileApiTest extends TestCase
 		 * like the route we want to test and the
 		 * status code the response should return.
 		 */
-		$route = route('api.profiles.search') . '?orderBy=id&orderDirection=asc';
+		$route = route('api.dogs.profiles.find') . '?orderBy=id&orderDirection=asc';
 		$code = 200;
 
 		/**
