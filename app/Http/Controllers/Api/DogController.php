@@ -16,22 +16,14 @@ class DogController extends Controller
 		return DogResource::collection($dogs);
 	}
 
-	public function show(Request $request)
+	public function show(Dog $id)
 	{
-		$dog = Dog::find($request->id);
-
-		if (!$dog) {
-			return response()->json([
-				'data' => []
-			], 404);
-		}
-
-		return new DogResource($dog);
+		return new DogResource($id);
 	}
 
 	public function find(Request $request)
 	{
-		$query = new Dog;
+		$query = Dog::query();
 
 		if ($request->has('id')) {
 			$query = $query->where('id', $request->id);
